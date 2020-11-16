@@ -8,6 +8,7 @@ import { LocationAddComponent } from './location-add/location-add.component';
 import { LocationGetComponent } from './location-get/location-get.component';
 import { SlimLoadingBarModule } from 'ng2-slim-loading-bar';
 import { ReactiveFormsModule } from '@angular/forms';
+import { WeatherService } from './weather.service'
 
 @NgModule({
   declarations: [
@@ -22,7 +23,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     SlimLoadingBarModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [WeatherService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

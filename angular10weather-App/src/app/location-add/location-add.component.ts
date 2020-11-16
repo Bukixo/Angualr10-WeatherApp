@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { WeatherService } from '../weather.service';
+import { Router } from '@angular/router';
+import Weather from '../weather';
 
 @Component({
   selector: 'app-location-add',
@@ -8,7 +11,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class LocationAddComponent implements OnInit {
   angForm!: FormGroup;
-  constructor( private fb: FormBuilder) {
+  constructor( private fb: FormBuilder, private weatherService: WeatherService, private router: Router) {
     this.createForm();
    }
 
@@ -17,6 +20,11 @@ export class LocationAddComponent implements OnInit {
        LocationName: ['', Validators.required]
      });
    }
+
+  //  getLocation(LocationName: string) {
+  //    this.weatherService.getLocation(LocationName);
+  //    this.router.navigate(['weather'])
+  //  }
 
   ngOnInit(): void {
   }
