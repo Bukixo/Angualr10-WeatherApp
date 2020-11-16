@@ -3,16 +3,20 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { WeatherGetComponent } from './weather-get/weather-get.component';
+import { HttpClientModule } from '@angular/common/http';
+import { LocationAddComponent } from './location-add/location-add.component';
+import { LocationGetComponent } from './location-get/location-get.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    WeatherGetComponent
+    LocationAddComponent,
+    LocationGetComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
