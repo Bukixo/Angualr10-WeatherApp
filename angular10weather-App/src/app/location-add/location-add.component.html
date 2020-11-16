@@ -1,1 +1,16 @@
-<p>location-add works!</p>
+<div class="card">
+    <div class="card-body">
+      <form [formGroup]="angForm" novalidate>
+        <div class="form-group">
+          <label class="col-md-4">Search for a city</label>
+          <input type="text" class="form-control" formControlName="LocationName" #LocationName/>
+        </div>
+        <div *ngIf="angForm.controls['LocationName'].invalid && (angForm.controls['LocationName'].dirty || angForm.controls['LocationName'].touched)" class="alert alert-danger">
+          Enter a Location
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+      </form>
+    </div>
+  </div>
