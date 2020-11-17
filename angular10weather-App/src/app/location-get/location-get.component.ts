@@ -23,7 +23,7 @@ export class LocationGetComponent implements OnInit {
 
   createForm() {
     this.angForm = this.fb.group({
-      LocationName: ['', Validators.required]      
+      LocationName: ['Belfast', Validators.required]      
     });
   }
 
@@ -42,7 +42,7 @@ export class LocationGetComponent implements OnInit {
   findLocation(woeid: any): void {
     this.weatherService.getLocation(woeid).subscribe((data: ConsolidatedWeather[]) => {
       //Object.values(dthis.locations)[0]
-      
+
       this.locations = Object.values(data)[0]
       console.log(this.locations);
       return this.locations;
