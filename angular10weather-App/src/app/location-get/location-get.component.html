@@ -1,7 +1,46 @@
-<p>location-get works!</p>
-<ul class="list-group">
-    <li
-      class="list-group-item"
-      *ngFor="let weather of weathers; let i = index"
+<!-- <p>location-get works!</p>
+<h1 *ngFor="l of locations.parent; let i = index">{{l.title}}</h1>
 
-    >{{weather.title}}</li>
+<p>location-get works!</p> -->
+<div *ngFor="l of locations.parent; let i = index">
+  <h1> {{l.title}}</h1>
+</div>
+
+<div class="container">
+    <div class="row">
+      <div class="col-12 col-md-3" *ngFor="let l of locations.consolidated_weather; let i = index">
+        <div class="card" style="width: 18rem;">
+            <!-- <img class="card-img-top" src="{{}" alt="Card image cap"> -->
+            <div class="card-body">
+              <h1>{{l.weather_state_name}}</h1>
+                <!-- <h5 class="card-title">{{l.the_temp}}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{l.weather_state_name}}</h6> -->
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>  
+
+  <div class="card">
+    <div class="card-body">
+        
+      This is some text within a card body.
+      <div class="card">
+        <div class="card-body">
+          <form [formGroup]="angForm" novalidate>
+            <div class="form-group">
+              <label class="col-md-4">Search for a city</label>
+              <input type="text" class="form-control" formControlName="LocationName" #LocationName/>
+            </div>
+            <div *ngIf="angForm.controls['LocationName'].invalid && (angForm.controls['LocationName'].dirty || angForm.controls['LocationName'].touched)" class="alert alert-danger">
+              Enter a Location
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary" (click)="readWeather(LocationName.value)">Search</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+

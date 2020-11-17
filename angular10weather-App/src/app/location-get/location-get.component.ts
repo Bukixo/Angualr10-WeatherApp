@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { WeatherService } from '../weather.service';
 import Weather from '../weather';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import ConsolidatedWeather from '../consolidatedWeather';
 
 @Component({
@@ -11,26 +12,37 @@ import ConsolidatedWeather from '../consolidatedWeather';
 export class LocationGetComponent implements OnInit {
 
   public weathers : any;
-  public test: Weather[] | undefined;
-  public consolidatedWeather : ConsolidatedWeather[] | undefined;
-  constructor(private weatherService: WeatherService) { }
-
-  ngOnInit(): void {
-    this.readWeather();
+  public default: string = "belfast";
+  public woeid: Weather[] | undefined;
+  public locations : ConsolidatedWeather[] | undefined;
+  angForm!: FormGroup;
+  constructor(private fb: FormBuilder, private weatherService: WeatherService) { 
+    this.createForm();
   }
 
-  readWeather(): void {
-    this.weatherService.readAll().subscribe((data: Weather[])=> {
-      this.test = Object.values(data[0])[2];
-      console.log(this.test);
-      this.findLocation(this.test);
+  createForm() {
+    this.angForm = this.fb.group({
+      LocationName: ['', Validators.required]      
+    });
+  }
+
+  ngOnInit(): void {
+    this.readWeather(this.default);
+  }
+
+  readWeather(query: any): void {
+    this.weatherService.readAll(query).subscribe((data: Weather[])=> {
+      this.woeid = Object.values(data[0])[2];
+      console.log(this.woeid);
+      this.findLocation(this.woeid);
     })
   }
 
   findLocation(woeid: any): void {
     this.weatherService.getLocation(woeid).subscribe((data: ConsolidatedWeather[]) => {
-      this.consolidatedWeather = data;
-      console.log(this.consolidatedWeather);
+      //Object.values(data)[0];
+      this.locations = data;
+      console.log(this.locations);
     })
   }
 

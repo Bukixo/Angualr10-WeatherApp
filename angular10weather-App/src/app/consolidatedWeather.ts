@@ -1,4 +1,4 @@
-export default class ConsolidatedWeather  {
+export default class ConsolidatedWeather {
     Id?: string;
     Weather_state_name?: string;
     Weather_state_abbr?: string;

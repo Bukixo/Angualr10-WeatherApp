@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 
 export class WeatherService {
-   uri = 'https://www.metaweather.com/api/location/search/?query=belfast';
+   uri = 'https://www.metaweather.com/api/location/search/?query=';
    locationUri = 'https://www.metaweather.com/api/location';
 
   constructor(private http: HttpClient) { }
@@ -19,8 +19,8 @@ export class WeatherService {
     return this.http.get(`${this.locationUri}/${query}/`);
   }
 
-  readAll(): Observable<any> {
-    return this.http.get(`${this.uri}`);
+  readAll(query: any): Observable<any> {
+    return this.http.get(`${this.uri}${query}`);
   }
 
 
