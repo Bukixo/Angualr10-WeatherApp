@@ -2,13 +2,10 @@
 <h1 *ngFor="l of locations.parent; let i = index">{{l.title}}</h1>
 
 <p>location-get works!</p> -->
-<div *ngFor="l of locations.parent; let i = index">
-  <h1> {{l.title}}</h1>
-</div>
 
 <div class="container">
     <div class="row">
-      <div class="col-12 col-md-3" *ngFor="let l of locations.consolidated_weather; let i = index">
+      <div class="col-12 col-md-3" *ngFor="let l of locations; let i = index">
         <div class="card" style="width: 18rem;">
             <!-- <img class="card-img-top" src="{{}" alt="Card image cap"> -->
             <div class="card-body">

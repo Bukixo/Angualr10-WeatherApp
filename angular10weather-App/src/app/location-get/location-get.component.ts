@@ -14,7 +14,8 @@ export class LocationGetComponent implements OnInit {
   public weathers : any;
   public default: string = "belfast";
   public woeid: Weather[] | undefined;
-  public locations : ConsolidatedWeather[] | undefined;
+  // public locations : ConsolidatedWeather[] | undefined;
+  public locations: any;
   angForm!: FormGroup;
   constructor(private fb: FormBuilder, private weatherService: WeatherService) { 
     this.createForm();
@@ -40,9 +41,11 @@ export class LocationGetComponent implements OnInit {
 
   findLocation(woeid: any): void {
     this.weatherService.getLocation(woeid).subscribe((data: ConsolidatedWeather[]) => {
-      //Object.values(data)[0];
-      this.locations = data;
+      //Object.values(dthis.locations)[0]
+      
+      this.locations = Object.values(data)[0]
       console.log(this.locations);
+      return this.locations;
     })
   }
 
