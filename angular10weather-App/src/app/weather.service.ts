@@ -12,16 +12,12 @@ export class WeatherService {
 
   constructor(private http: HttpClient) { }
 
-  
-
   getLocation(query: any): Observable<any> {
-    console.log(`${this.uri}/${query}/`);
     return this.http.get(`${this.locationUri}/${query}/`);
   }
 
   readAll(query: any): Observable<any> {
     return this.http.get(`${this.uri}${query}`);
   }
-
-
+  
 }

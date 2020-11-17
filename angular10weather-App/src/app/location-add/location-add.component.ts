@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { WeatherService } from '../weather.service';
 import { Router } from '@angular/router';
@@ -21,10 +21,11 @@ export class LocationAddComponent implements OnInit {
      });
    }
 
-  //  getLocation(LocationName: string) {
-  //    this.weatherService.getLocation(LocationName);
-  //    this.router.navigate(['weather'])
-  //  }
+   @Output() messageEvent = new EventEmitter<string>();
+
+   sendMessage(value: string) {
+    this.messageEvent.emit(value);
+  }
 
   ngOnInit(): void {
   }
